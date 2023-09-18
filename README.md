@@ -11,10 +11,13 @@ The dataset has been successfully read from the CSV file. Preliminary cleaning a
 ### 2. Accurate Summary Statistics 
 
 Descriptive statistics have been generated for selected numeric columns. This includes the mean, median, and standard deviation, providing an overview of the data's central tendency and dispersion.
+![Alt text](03e8ff78231345fb143ed6b70f3705c.png)
 
 ### 3. Data Visualization 
+Since polars does not provide built-in data visualization tools, we will continue to use matplotlib and seaborn to visualize the data.
 
 A bar chart has been produced, showcasing the top 10 most streamed songs on Spotify in 2023. This helps identify which songs were most popular during the year.
+![Alt text](image-1.png)
 
 ## Deliverables
 
