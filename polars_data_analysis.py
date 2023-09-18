@@ -1,4 +1,4 @@
-import polars as pl
+import polars_data_analysis as pl
 
 # Load the dataset using polars
 df_spotify_polars = pl.read_csv("spotify-2023.csv", encoding="ISO-8859-1")
