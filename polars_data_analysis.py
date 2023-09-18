@@ -14,19 +14,22 @@ print(df_spotify_polars.head())
 print("\n")
 
 # Generate summary statistics for numeric columns
-print("testing")
-print(df_spotify_polars.describe().columns)
+#print("testing1111")
+#print(df_spotify_polars.describe().columns)
 #summary_statistics_polars = df_spotify_polars.describe().select(['column', 'mean', '50%', 'std_dev'])
-summary_statistics_polars = df_spotify_polars.describe().filter(df_spotify_polars['describe'].is_in(['mean', '50%', 'std_dev'])).select(['describe', 'streams'])
-summary_statistics_polars = summary_statistics_polars.with_column(
-    summary_statistics_polars.col('std_dev').alias('Standard Deviation')
-).select(['column', 'mean', '50%', 'Standard Deviation'])
+# First get the described DataFrame
+df_described = df_spotify_polars.describe()
+
+# Now, filter and select columns from this described DataFrame
+summary_statistics_polars = df_described.filter(df_described['describe'].is_in(['mean', '50%', 'std_dev'])).select(['describe', 'streams'])
+
 print("=== Summary Statistics ===")
 print(summary_statistics_polars)
 print("\n")
 
 # Top 10 songs by streams
-top_10_songs_polars = df_spotify_polars.sort('streams', reverse=True).limit(10)
+top_10_songs_polars = df_spotify_polars.sort("streams").reverse().limit(10)
+
 print("=== Top 10 Songs by Streams ===")
 print(top_10_songs_polars.select(['track_name', 'artist(s)_name', 'streams']))
 print("\n")
