@@ -16,7 +16,8 @@ print("\n")
 # Generate summary statistics for numeric columns
 print("testing")
 print(df_spotify_polars.describe().columns)
-summary_statistics_polars = df_spotify_polars.describe().select(['column', 'mean', '50%', 'std_dev'])
+#summary_statistics_polars = df_spotify_polars.describe().select(['column', 'mean', '50%', 'std_dev'])
+summary_statistics_polars = df_spotify_polars.describe().filter(df_spotify_polars['describe'].is_in(['mean', '50%', 'std_dev'])).select(['describe', 'streams'])
 summary_statistics_polars = summary_statistics_polars.with_column(
     summary_statistics_polars.col('std_dev').alias('Standard Deviation')
 ).select(['column', 'mean', '50%', 'Standard Deviation'])
